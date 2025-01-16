@@ -38,13 +38,12 @@ func AstRewrite(dir ...string) (err error) {
 var (
 	rootDir, _  = os.Getwd()
 	processName = ""
-	Filter      = "/data_config/router"
+	Filter      = "/router/"
 )
 
 func init() {
 	tmp := strings.Split(rootDir, "/")
 	processName = tmp[len(tmp)-1]
-	Filter = "/" + processName + "/"
 }
 
 func PrintStack(startTime time.Time) {
@@ -84,7 +83,7 @@ func PrintStack(startTime time.Time) {
 
 	//tip := fmt.Sprintf("@@%d %s_%s 耗时执行:%d", startTime.UnixNano(), spaceStr, method, mil)
 	tip := fmt.Sprintf("@@%d 耗时执行:%-4d %s_%s%s", startTime.UnixNano(), mil, spaceStr, method, sourceFileLine)
-	//fmt.Println(tip)
+	fmt.Println(tip)
 	defaultSafeArray.Add(int(startTime.UnixNano()), count, tip)
 	if count <= 1 {
 		fmt.Println()
