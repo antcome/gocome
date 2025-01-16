@@ -44,6 +44,7 @@ var (
 func init() {
 	tmp := strings.Split(rootDir, "/")
 	processName = tmp[len(tmp)-1]
+	Filter = "/" + processName + "/"
 }
 
 func PrintStack(startTime time.Time) {
@@ -85,7 +86,7 @@ func PrintStack(startTime time.Time) {
 	tip := fmt.Sprintf("@@%d 耗时执行:%-4d %s_%s%s", startTime.UnixNano(), mil, spaceStr, method, sourceFileLine)
 	//fmt.Println(tip)
 	defaultSafeArray.Add(int(startTime.UnixNano()), count, tip)
-	if count <= 1 {
+	if count <= 2 {
 		fmt.Println()
 		fmt.Println(rootDir)
 		fmt.Println(strings.Join(defaultSafeArray.ReserveAndClear(), "\n"))
