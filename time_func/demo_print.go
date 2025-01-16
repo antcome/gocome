@@ -86,7 +86,7 @@ func PrintStack(startTime time.Time) {
 	tip := fmt.Sprintf("@@%d 耗时执行:%-4d %s_%s%s", startTime.UnixNano(), mil, spaceStr, method, sourceFileLine)
 	//fmt.Println(tip)
 	defaultSafeArray.Add(int(startTime.UnixNano()), count, tip)
-	if count <= 2 {
+	if count <= 1 {
 		fmt.Println()
 		fmt.Println(rootDir)
 		fmt.Println(strings.Join(defaultSafeArray.ReserveAndClear(), "\n"))
