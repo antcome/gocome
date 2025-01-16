@@ -49,9 +49,9 @@ func init() {
 func PrintStack(startTime time.Time) {
 	//time.Sleep(1 * time.Microsecond)
 	mil := time.Since(startTime).Milliseconds()
-	//if mil <= 3 {
-	//	return
-	//}
+	if mil <= 3 {
+		return
+	}
 
 	stack := string(debug.Stack())
 	if !strings.Contains(stack, Filter) {
